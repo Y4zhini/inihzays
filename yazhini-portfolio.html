@@ -251,15 +251,16 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:cen
   right:max(clamp(10px,2vw,22px), env(safe-area-inset-right,0px));
   max-width:1480px;margin:0 auto;
   background:var(--cs-bg);color:var(--cs-ink);border-radius:clamp(18px,2.2vw,30px);overflow:hidden;
-  display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);
+  display:grid;grid-template-columns:56px minmax(0,1fr);grid-template-rows:minmax(0,1fr);
   transform:translateY(60px) scale(.97);opacity:0;
   transition:transform .8s var(--ease), opacity .5s var(--ease);
   box-shadow:0 30px 80px rgba(0,0,0,.18);
 }
 .cs.on .cs-scrim{opacity:1}
 .cs.on .cs-panel{transform:none;opacity:1}
-.cs-bar{position:absolute;left:0;right:0;top:0;height:3px;z-index:3;pointer-events:none}
-.cs-bar span{display:block;height:100%;background:var(--cs-brand);transform-origin:0 50%;transform:scaleX(0)}
+.cs-bar{grid-column:1;grid-row:1;justify-self:center;align-self:stretch;width:3px;margin-block:28px;border-radius:3px;background:#ECECEA;overflow:hidden;pointer-events:none}
+.cs-bar span{display:block;width:100%;height:100%;border-radius:inherit;background:var(--cs-brand);transform-origin:50% 0;transform:scaleY(0)}
+.cs-scroll{grid-column:2;grid-row:1}
 .cs-close{
   position:absolute;top:18px;right:18px;z-index:4;width:46px;height:46px;border-radius:50%;
   background:var(--cs-bg);border:1px solid #E6E6E6;cursor:pointer;display:grid;place-items:center;
@@ -268,7 +269,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:cen
 .cs-close span{position:absolute;width:15px;height:1.5px;background:var(--cs-ink);border-radius:2px;transform:rotate(45deg)}
 .cs-close span + span{transform:rotate(-45deg)}
 .cs-close:hover{transform:rotate(90deg);background:var(--cs-tint)}
-.cs-nav{display:flex;justify-content:center;padding:14px 76px 12px;border-bottom:1px solid #F0F0F0;min-width:0}
+.cs-nav{display:none!important;justify-content:center;padding:14px 76px 12px;border-bottom:1px solid #F0F0F0;min-width:0}
 .cs-bar-in{display:flex;align-items:center;gap:6px;max-width:100%;min-width:0;padding:5px;border-radius:999px;background:#F2F2F0}
 .cs-back{flex:none;display:inline-flex;align-items:center;gap:7px;padding:9px 14px 9px 12px;border:0;border-radius:999px;background:none;cursor:pointer;
   font:600 14px/1 var(--body);color:var(--cs-ink);transition:background-color .3s var(--ease)}
@@ -305,6 +306,8 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:cen
 }
 @media (max-width:860px){
   .cs-nav{justify-content:flex-start;padding:10px 60px 10px 10px}
+  .cs-panel{grid-template-columns:24px minmax(0,1fr)}
+  .cs-bar{margin-block:20px;width:3px}
   .cs-back{padding:9px 10px}
   .cs-back b{display:none}
   .cs-list button{font-size:13px;padding:9px 12px}
@@ -844,7 +847,7 @@ const ASSET = {"cs/origin-01-intro.jpg":"data:image/jpeg;base64,/9j/4AAQSkZJRgAB
   }
   function onScroll() {
     const st = scrollEl.scrollTop, max = scrollEl.scrollHeight - scrollEl.clientHeight;
-    prog.style.transform = `scaleX(${max > 0 ? st / max : 0})`;
+    prog.style.transform = `scaleY(${max > 0 ? st / max : 0})`;
     const probe = st + scrollEl.clientHeight * 0.35;
     let i = 0;
     for (let j = 0; j < figs.length; j++) if (figs[j].offsetTop <= probe) i = j;
