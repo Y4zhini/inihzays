@@ -251,7 +251,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:cen
   right:max(clamp(10px,2vw,22px), env(safe-area-inset-right,0px));
   max-width:900px;margin:0 auto;
   background:var(--cs-bg);color:var(--cs-ink);border-radius:clamp(18px,2.2vw,30px);overflow:hidden;
-  display:grid;grid-template-columns:56px minmax(0,1fr);grid-template-rows:minmax(0,1fr);
+  display:grid;grid-template-columns:56px minmax(0,1fr) 56px;grid-template-rows:minmax(0,1fr);
   transform:translateY(60px) scale(.97);opacity:0;
   transition:transform .8s var(--ease), opacity .5s var(--ease);
   box-shadow:0 30px 80px rgba(0,0,0,.18);
@@ -262,7 +262,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:cen
 .cs-bar span{display:block;width:100%;height:100%;border-radius:inherit;background:var(--cs-brand);transform-origin:50% 0;transform:scaleY(0)}
 .cs-scroll{grid-column:2;grid-row:1}
 .cs-close{
-  position:absolute;top:18px;right:18px;z-index:4;width:46px;height:46px;border-radius:50%;
+  position:absolute;top:18px;right:5px;z-index:4;width:46px;height:46px;border-radius:50%;
   background:var(--cs-bg);border:1px solid #E6E6E6;cursor:pointer;display:grid;place-items:center;
   transition:transform .6s var(--ease), background-color .3s var(--ease);
 }
@@ -289,7 +289,8 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:cen
 .cs-list button[aria-current="true"]{color:var(--cs-ink)}
 .cs-list button.anim span::after{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.55;margin-left:6px;vertical-align:middle}
 .cs-list button:focus-visible{outline-color:var(--cs-ink);outline-offset:-2px}
-.cs-scroll{overflow-y:auto;overscroll-behavior:contain;min-width:0}
+.cs-scroll{overflow-y:auto;overscroll-behavior:contain;min-width:0;scrollbar-width:none}
+.cs-scroll::-webkit-scrollbar{display:none}
 .cs-scroll figure{margin:0}
 .cs-scroll img,.cs-scroll video{display:block;width:100%;height:auto;max-width:100%}
 .cs-scroll video{aspect-ratio:16/9;background:#fff}
@@ -306,7 +307,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:cen
 }
 @media (max-width:860px){
   .cs-nav{justify-content:flex-start;padding:10px 60px 10px 10px}
-  .cs-panel{grid-template-columns:24px minmax(0,1fr)}
+  .cs-panel{grid-template-columns:24px minmax(0,1fr) 24px}
   .cs-bar{margin-block:20px;width:3px}
   .cs-back{padding:9px 10px}
   .cs-back b{display:none}
