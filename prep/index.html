@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/png" href="../favicon.png">
+<title>Prep Room</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Poppins:wght@400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+/* Layout: one calm column. Set up (portfolio + interview) on top, the prep below it, a practice drawer at the end. Black and white only. */
+:root{
+  --bg:#FFFFFF;
+  --fg:#121311;
+  --muted:#7D7F84;
+  --soft:#F4F4F3;
+  --line:#E9E9E7;
+  --ink-inv:#FFFFFF;
+  --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pop:cubic-bezier(.34,1.56,.64,1);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0B0B0A;--fg:#F4F4EF;--muted:#8A8C86;--soft:#161715;--line:#24251F;--ink-inv:#0B0B0A;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0B0B0A;--fg:#F4F4EF;--muted:#8A8C86;--soft:#161715;--line:#24251F;--ink-inv:#0B0B0A;color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font:400 15px/1.6 var(--body);-webkit-font-smoothing:antialiased;
+  padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+.wrap{max-width:720px;margin:0 auto;padding-block:40px 80px}
+::selection{background:var(--fg);color:var(--bg)}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px dashed var(--fg);outline-offset:3px;border-radius:10px}
+
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px}
+.mark{font:800 24px/1 var(--display);letter-spacing:-.04em}
+.mark span{opacity:.35}
+.hint{font-size:13px;color:var(--muted)}
+
+h1{font:800 clamp(40px,7vw,64px)/.95 var(--display);letter-spacing:-.045em;margin:0 0 14px;text-wrap:balance}
+.lede{margin:0 0 44px;color:var(--muted);max-width:46ch}
+
+.step{padding-block:26px;border-top:1px solid var(--line);display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px}
+.step > .lab{font:600 11px/1.6 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:9px}
+.stack{display:flex;flex-direction:column;gap:14px;min-width:0}
+
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:999px;background:var(--soft);align-self:flex-start}
+.seg button{border:0;background:none;padding:9px 16px;border-radius:999px;cursor:pointer;font-weight:500;font-size:14px;color:var(--muted);transition:background-color .3s var(--ease), color .3s var(--ease)}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.seg button:hover:not([aria-pressed="true"]){color:var(--fg)}
+
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-size:13px;color:var(--muted)}
+input[type=text],textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:12px 14px;outline:none;transition:border-color .2s}
+input[type=text]:focus,textarea:focus{border-color:var(--fg)}
+textarea{min-height:120px;resize:vertical;line-height:1.55}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.drop{border:1px dashed var(--line);border-radius:16px;padding:22px;text-align:center;color:var(--muted);cursor:pointer;transition:border-color .2s, background-color .2s}
+.drop:hover,.drop.over{border-color:var(--fg);color:var(--fg)}
+.drop b{color:var(--fg);font-weight:500}
+.note{font-size:13px;color:var(--muted);margin:0}
+.note.ok{color:var(--fg)}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:6px 12px;border-radius:999px;background:var(--soft);align-self:flex-start}
+
+.go{display:flex;align-items:center;gap:14px;padding-top:26px;border-top:1px solid var(--line);flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:14px 24px;font-weight:500;cursor:pointer;background:var(--fg);color:var(--bg);transition:transform .45s var(--pop), opacity .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.4;cursor:default;transform:none}
+.btn.ghost{background:var(--soft);color:var(--fg)}
+.btn.small{padding:9px 16px;font-size:13px}
+.status{font-size:13px;color:var(--muted)}
+.dots::after{content:"";animation:dots 1.4s steps(4,end) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+
+/* results */
+#out{margin-top:56px}
+.empty{padding:28px;border-radius:20px;background:var(--soft);color:var(--muted)}
+.empty b{color:var(--fg);font-weight:600}
+.sec{padding-block:28px;border-top:1px solid var(--line)}
+.sec h2{font:700 24px/1.1 var(--display);letter-spacing:-.025em;margin:0 0 16px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.sec h2 small{font:400 13px/1 var(--body);color:var(--muted);letter-spacing:0}
+.pitch{font-size:17px;line-height:1.65;margin:0}
+.qs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.q{border-bottom:1px solid var(--line)}
+.q > button{width:100%;display:grid;grid-template-columns:28px minmax(0,1fr) 20px;gap:10px;align-items:baseline;text-align:left;background:none;border:0;padding:16px 0;cursor:pointer}
+.q .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.q .t{font-weight:500}
+.q .pl{font-size:18px;line-height:1;color:var(--muted);transition:transform .4s var(--pop)}
+.q[open-q] .pl{transform:rotate(45deg)}
+.q .body{display:none;padding:0 0 20px 38px}
+.q[open-q] .body{display:block}
+.why{font-size:13px;color:var(--muted);margin:0 0 10px}
+.body ul{margin:0 0 14px;padding-left:18px}
+.body li{margin:4px 0}
+.tag{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-left:8px;white-space:nowrap}
+.walk{display:flex;flex-direction:column;gap:22px}
+.walk h3{font:700 18px/1.2 var(--display);letter-spacing:-.02em;margin:0 0 6px}
+.walk p{margin:0;white-space:pre-wrap}
+.risk{display:flex;flex-direction:column;gap:18px}
+.risk div b{display:block;font-weight:600;margin-bottom:4px}
+.risk div p{margin:0;color:var(--muted)}
+
+/* practice */
+.practice{margin-top:12px;padding:24px;border-radius:22px;background:var(--soft);display:flex;flex-direction:column;gap:14px}
+.practice .qq{font:700 20px/1.25 var(--display);letter-spacing:-.02em;margin:0}
+.fb{background:var(--bg);border-radius:16px;padding:18px 20px}
+.fb h4{font:600 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.fb h4:first-child{margin-top:0}
+.fb p{margin:0 0 8px}
+.fb ul{margin:0 0 8px;padding-left:18px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.err{font-size:13px;color:var(--fg);padding:12px 14px;border-radius:12px;border:1px solid var(--fg)}
+
+@media (max-width:620px){
+  .step{grid-template-columns:minmax(0,1fr);gap:10px}
+  .step > .lab{padding-top:0}
+  .row{grid-template-columns:minmax(0,1fr)}
+  .q .body{padding-left:0}
+  .seg button{padding:8px 11px;font-size:13px}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="mark">yz<span>.</span> prep</div>
+    <span class="hint" id="saved" hidden>last prep restored</span>
+  </header>
+
+  <h1>Walk in ready.</h1>
+  <p class="lede">Give it your portfolio and the interview you’re heading into. You get your pitch, the questions they’ll likely ask, how to walk through each project, and a place to practise answers.</p>
+
+  <section class="step">
+    <div class="lab">Portfolio</div>
+    <div class="stack">
+      <div class="seg" role="group" aria-label="Portfolio source">
+        <button type="button" data-src="mine" aria-pressed="true">My portfolio</button>
+        <button type="button" data-src="pdf" aria-pressed="false">Upload PDF</button>
+        <button type="button" data-src="paste" aria-pressed="false">Link or text</button>
+      </div>
+
+      <div data-pane="mine">
+        <span class="chip">y4zhini.github.io/inihzays · The Origin, Kite, Riot Games, 3 internships</span>
+      </div>
+
+      <div data-pane="pdf" hidden>
+        <label class="drop" id="drop" for="pdfIn">
+          <b>Choose a PDF</b> or drop it here<br><span style="font-size:13px">Portfolio, case study or resume</span>
+        </label>
+        <input type="file" id="pdfIn" accept="application/pdf" hidden>
+        <p class="note" id="pdfNote" style="margin-top:10px"></p>
+      </div>
+
+      <div data-pane="paste" hidden>
+        <div class="field">
+          <label for="pasteIn">Paste a portfolio link, or the text of a portfolio or case study</label>
+          <textarea id="pasteIn" placeholder="https://… or paste text here"></textarea>
+        </div>
+        <p class="note" id="pasteNote"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="lab">Interview</div>
+    <div class="stack">
+      <div class="seg" role="group" aria-label="Interview type">
+        <button type="button" data-kind="internship" aria-pressed="true">Internship</button>
+        <button type="button" data-kind="graduation project" aria-pressed="false">Graduation project</button>
+      </div>
+      <div class="row">
+        <div class="field"><label for="role">Role</label><input type="text" id="role" value="Product design intern"></div>
+        <div class="field"><label for="company">Company <span style="opacity:.6">(optional)</span></label><input type="text" id="company" placeholder="e.g. a fintech startup"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="go">
+    <button class="btn" id="prepBtn" type="button">Prepare me</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <div id="out">
+    <div class="empty" id="empty"><b>Your prep shows up here.</b> A 60-second pitch, around ten likely questions with answer outlines, a walkthrough for each project and the tough spots to get ready for. It takes about a minute.</div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  /* ---------- Yazhini's portfolio, built in ---------- */
+  const MINE = `Yazhini S — Product Designer. Student at Vellore Institute of Technology (2023 – present, graduating 2027).
+Portfolio: y4zhini.github.io/inihzays · LinkedIn: linkedin.com/in/inihzays · Behance: behance.net/yazhinis
+About: An empath obsessed with human behavior, asking "Why did they do that?" before every build. Looks at what people actually do on a screen, then shapes the product around it.
+
+EXPERIENCE
+- UI/UX Design Intern, Avocado Studio (Jun 2026 – Jul 2026). Client work: The Origin.
+- Product Design Intern, SStudize (Oct 2025 – Apr 2026, remote). Designed and shipped two AI features, StudentGPT and TeacherGPT, end to end from user flows to developer handoff; simplified the learning experience for 500+ students.
+- Web Design Intern, Valsco Technology (Aug 2025 – Oct 2025, remote). Ideated and designed screens for a new blog feature, from early concepts to UI.
+
+PROJECT 1 — The Origin (client work at Avocado Studio, 4 weeks, 2026, UI designer, Figma)
+E-commerce admin panel that lets a store team manage both B2C and bulk (wholesale) orders from one place, with control over products, customers, coupons, banners and analytics.
+Problem ("The Admin's Reality"): difficulty managing B2C and bulk orders without switching between systems; poor visibility of inventory, low-stock levels and orders; slow, repetitive processes for updating order statuses and handling customer requests; scattered tools for coupons, banners and analytics.
+Design: one panel with a sidebar (Home, Orders, Products, Customers, Analytics, Coupon, Banners) and a persistent B2C / Bulk orders toggle in the top bar. Home is a performance dashboard with quick actions (add product, edit product, view orders, view customers, create coupon) and key metrics (total, completed and pending orders, revenue, average order value, conversion rate, returning customer rate). Orders: table with bulk selection and an update-status dialog that can notify customers. Customers: table and customer profiles with segments (new, repeat, membership, abandoned checkouts). Products: inventory table, add-product form, product picker. Analytics: sales, conversion and customer charts. Coupons: coupon management plus a coupon notification on phone. Information architecture map. Typography: Rethink Sans (Regular, Medium, Semi Bold, Bold). Colours: #F8F8F8, #181919 and crimson #B8030E.
+
+PROJECT 2 — Kite (concept: browser extension + mobile companion + workspace)
+"One quiet system across extension, workspace and phone, built to keep every application in reach." The name: a kite is light but never drifts away; one thin string keeps it close and you decide where it goes.
+User: Isabella, software engineer. Her request: a minimal, trustworthy app for her job search that automatically finds applications, confirms with her before adding them, and quietly gets her ready for every interview call.
+Problems → solutions: applications, invites and calls are scattered across job sites, inboxes and unknown numbers → Kite finds your applications and preps you for every recruiter call. Invites get buried in long emails so dates are missed → Kite pulls interview details out of email into the pipeline. Calls arrive from unknown numbers when you're least ready → a call card shows who's calling and talking points before you pick up.
+Research insight: conversations with classmates applying for internships, and exploring tools like Huntr and Teal, revealed a recurring problem: updating lists by hand, missing a call window, and blanking on what to say.
+Design directions: Help on time (Kite stays quiet until a call comes in; then one small card shows company, role and talking points). You decide (Kite reads only the apps you choose; every find waits for you to confirm, edit or delete; the pipeline only changes when you say so). Calm by default (white space, one quiet blue, one typeface — Poppins — few components that behave the same everywhere).
+Motion prototypes: smart job capture, application tracking, inbox intelligence, smart call detection, link error handling. Screens: components, settings, add a job (manually or paste link).
+
+PROJECT 3 — Riot Games (speculative design, mobile, gaming / e-commerce, concept)
+"Your fav skin just dropped. You're AFK." Valorant's daily rotating store lives only inside the PC client, so players away from their PC miss skins.
+The gap: no mobile access; third-party risk (unofficial shop checkers demand Riot credentials, run paywalls and show inappropriate ads to younger players); lost revenue and FOMO.
+Quick pulse survey (25 responses, Valorant players and creators on Discord): 44% check the store daily, 36% a few times a week; 52% often felt they missed a favourite skin; 68% would use a wishlist with notifications; 40% said it would make them check the store more consistently.
+Designed: a Store tab inside Riot's existing mobile app (no new app, no extra login) — daily rotating store with VP balance and countdown, search with weapon filters and owned/locked states, a heart to save skins to Favorites, and alerts when a saved skin appears ("1 skin in your shop now!"). Constraint: Riot restricts mobile purchases, so the app informs and the PC executes.
+Next: wishlist push alerts before expiry, in-app purchase flow if policy changes, skin history and price tracking.`;
+
+  /* ---------- source switching ---------- */
+  let src = 'mine', pdfText = '', kind = 'internship';
+  document.querySelectorAll('[data-src]').forEach((b) => b.addEventListener('click', () => {
+    src = b.dataset.src;
+    document.querySelectorAll('[data-src]').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+    document.querySelectorAll('[data-pane]').forEach((p) => { p.hidden = p.dataset.pane !== src; });
+  }));
+  document.querySelectorAll('[data-kind]').forEach((b) => b.addEventListener('click', () => {
+    kind = b.dataset.kind;
+    document.querySelectorAll('[data-kind]').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+    if (kind === 'graduation project' && $('role').value === 'Product design intern') $('role').value = 'Final-year design project';
+    if (kind === 'internship' && $('role').value === 'Final-year design project') $('role').value = 'Product design intern';
+  }));
+
+  /* ---------- PDF reading ---------- */
+  const pdfNote = $('pdfNote'), drop = $('drop');
+  if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  async function readPdf(file) {
+    if (!file) return;
+    if (!window.pdfjsLib) { pdfNote.textContent = 'The PDF reader didn’t load. Paste the text under “Link or text” instead.'; return; }
+    pdfNote.className = 'note'; pdfNote.textContent = 'Reading ' + file.name + '…';
+    try {
+      const doc = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+      let text = '';
+      for (let i = 1; i <= doc.numPages && text.length < 60000; i++) {
+        const page = await doc.getPage(i);
+        const tc = await page.getTextContent();
+        text += tc.items.map((it) => it.str).join(' ') + '\n';
+      }
+      text = text.replace(/[ \t]+/g, ' ').trim();
+      if (text.length < 200) {
+        pdfText = '';
+        pdfNote.textContent = 'This PDF is mostly images, so there’s little text to read. Paste your project notes under “Link or text” instead.';
+        return;
+      }
+      pdfText = text.slice(0, 60000);
+      pdfNote.className = 'note ok';
+      pdfNote.textContent = file.name + ' · ' + doc.numPages + ' page' + (doc.numPages > 1 ? 's' : '') + ' read';
+    } catch (e) {
+      pdfText = '';
+      pdfNote.textContent = 'Couldn’t read that file. Try another PDF, or paste the text instead.';
+    }
+  }
+  $('pdfIn').addEventListener('change', (e) => readPdf(e.target.files[0]));
+  ['dragenter','dragover'].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave','drop'].forEach((t) => drop.addEventListener(t, () => drop.classList.remove('over')));
+  drop.addEventListener('drop', (e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) readPdf(f); });
+
+  /* ---------- pick the portfolio text ---------- */
+  function portfolioText() {
+    if (src === 'mine') return MINE;
+    if (src === 'pdf') return pdfText || null;
+    const v = $('pasteIn').value.trim();
+    if (!v) return null;
+    if (/^https?:\/\/\S+$/i.test(v) || /^[\w.-]+\.[a-z]{2,}\/?\S*$/i.test(v)) {
+      if (/y4zhini\.github\.io|inihzays/i.test(v)) return MINE;
+      $('pasteNote').textContent = 'This page can’t open other websites. Paste the portfolio’s text, or download it as a PDF and upload it.';
+      return null;
+    }
+    $('pasteNote').textContent = '';
+    return v.slice(0, 60000);
+  }
+
+  /* ---------- Claude ---------- */
+  let sample = null;
+  const sampleReady = (window.claude && window.claude.use) ? window.claude.use('sample').then((s) => { sample = s; }).catch(() => {}) : Promise.resolve();
+  const status = $('status'), prepBtn = $('prepBtn');
+  const errCopy = (code) => ({
+    not_granted: 'Claude wasn’t allowed for this page. Reload and choose Allow to use it.',
+    sampling_disabled: 'Claude isn’t available on this account.',
+    rate_limited: 'Too many requests right now. Wait a minute and try again.',
+    session_expired: 'You’ve been signed out. Sign in to Claude and try again.',
+    prompt_too_large: 'That portfolio is too long. Upload a shorter PDF or paste a single case study.',
+    invalid_json: 'The answer came back in the wrong shape. Press the button again.',
+    refused: 'Claude couldn’t prepare this. Try different portfolio text.',
+  }[code] || 'Something went wrong. Try again.');
+
+  const LIVE = 'https://claude.ai/artifact/DbyNfHcZc3QRnS1op8H9zn';
+  function noClaude(box) {
+    box.textContent = 'This page uses Claude to write your prep, so it only works inside claude.ai. ';
+    const a = el('a', null, 'Open it in Claude'); a.href = LIVE; a.target = '_blank'; a.rel = 'noopener'; a.style.color = 'inherit'; a.style.fontWeight = '600';
+    box.append(a);
+  }
+  let prep = null;
+
+  function interviewLine() {
+    const role = $('role').value.trim() || (kind === 'internship' ? 'Product design intern' : 'Final-year design project');
+    const co = $('company').value.trim();
+    return `Interview type: ${kind}. Role: ${role}.${co ? ' Company: ' + co + '.' : ''}`;
+  }
+
+  prepBtn.addEventListener('click', async () => {
+    const text = portfolioText();
+    if (!text) {
+      status.textContent = src === 'pdf' ? 'Upload a PDF first.' : src === 'paste' && !$('pasteNote').textContent ? 'Paste a link or some text first.' : '';
+      return;
+    }
+    await sampleReady;
+    if (!sample) { noClaude(status); return; }
+    prepBtn.disabled = true;
+    status.innerHTML = '<span class="dots">Preparing your interview</span>';
+    const prompt = `You are a senior product design interviewer coaching a design student for a real interview.
+${interviewLine()}
+
+Using ONLY the portfolio below (never invent projects, numbers, employers or results that are not in it), prepare them.
+Reply with only one JSON object, no other text, in exactly this shape:
+{"pitch": "a 60-second 'tell me about yourself' answer in first person, warm and specific, 110-150 words",
+ "questions": [{"q": "question", "why": "what the interviewer is really checking, one sentence", "outline": ["3-4 short points to hit, drawn from the portfolio"], "project": "project name it refers to, or ''"}],
+ "walkthroughs": [{"project": "name", "script": "a 90-second spoken walkthrough: context, problem, what they did and why, outcome or what they learned. First person. 120-170 words."}],
+ "risks": [{"risk": "a tough follow-up or gap an interviewer may probe", "answer": "how to answer it honestly and confidently, 1-2 sentences"}]}
+Give 10 questions: about 4 behavioural or motivation, about 6 about their specific projects and decisions. One walkthrough per project in the portfolio (max 4). 4 risks. Plain text inside strings, no markdown.
+
+PORTFOLIO:
+${text}`;
+    try {
+      const data = await sample.json(prompt, { modelTier: 'default' });
+      if (!data || !data.pitch || !Array.isArray(data.questions)) throw { code: 'invalid_json' };
+      prep = { data, at: Date.now(), ctx: interviewLine() };
+      try { localStorage.setItem('prep-room', JSON.stringify(prep)); } catch (e) {}
+      render();
+      status.textContent = '';
+      $('out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (e) {
+      status.textContent = errCopy(e && e.code);
+    } finally {
+      prepBtn.disabled = false;
+    }
+  });
+
+  /* ---------- render ---------- */
+  function render() {
+    const out = $('out'); out.textContent = '';
+    if (!prep) return;
+    const d = prep.data;
+
+    const s1 = el('section', 'sec');
+    const h1 = el('h2'); h1.append(el('span', null, 'Your pitch'));
+    const copy = el('button', 'btn ghost small', 'Copy'); copy.type = 'button';
+    copy.onclick = async () => { try { await navigator.clipboard.writeText(d.pitch); copy.textContent = 'Copied'; setTimeout(() => copy.textContent = 'Copy', 1500); } catch (e) { copy.textContent = 'Select and copy'; } };
+    h1.append(copy); s1.append(h1, el('p', 'pitch', d.pitch));
+
+    const s2 = el('section', 'sec');
+    const h2 = el('h2'); h2.append(el('span', null, 'Likely questions'), el('small', null, 'tap one to open'));
+    const ul = el('ol', 'qs');
+    (d.questions || []).forEach((q, i) => {
+      const li = el('li', 'q');
+      const b = el('button'); b.type = 'button';
+      const t = el('span', 't', String(q.q || '')); if (q.project) t.append(el('span', 'tag', String(q.project)));
+      b.append(el('span', 'n', String(i + 1).padStart(2, '0')), t, el('span', 'pl', '+'));
+      b.setAttribute('aria-expanded', 'false');
+      b.onclick = () => { const o = li.toggleAttribute('open-q'); b.setAttribute('aria-expanded', String(o)); };
+      const body = el('div', 'body');
+      if (q.why) body.append(el('p', 'why', 'They’re checking: ' + q.why));
+      const ol = el('ul'); (q.outline || []).forEach((p) => ol.append(el('li', null, String(p)))); body.append(ol);
+      li.append(b, body); ul.append(li);
+    });
+    s2.append(h2, ul);
+
+    const s3 = el('section', 'sec');
+    s3.append(el('h2', null, 'Project walkthroughs'));
+    const w = el('div', 'walk');
+    (d.walkthroughs || []).forEach((x) => { const div = el('div'); div.append(el('h3', null, String(x.project || '')), el('p', null, String(x.script || ''))); w.append(div); });
+    s3.append(w);
+
+    const s4 = el('section', 'sec');
+    s4.append(el('h2', null, 'Tough spots'));
+    const r = el('div', 'risk');
+    (d.risks || []).forEach((x) => { const div = el('div'); div.append(el('b', null, String(x.risk || '')), el('p', null, String(x.answer || ''))); r.append(div); });
+    s4.append(r);
+
+    const s5 = el('section', 'sec'); s5.id = 'practiceSec';
+    const h5 = el('h2'); h5.append(el('span', null, 'Practice'), el('small', null, 'answer, get feedback, go again'));
+    s5.append(h5);
+    const start = el('button', 'btn', 'Start practising'); start.type = 'button'; start.onclick = () => openPractice(0);
+    s5.append(start);
+
+    const again = el('div', 'acts'); again.style.paddingTop = '28px'; again.style.borderTop = '1px solid var(--line)';
+    const regen = el('button', 'btn ghost small', 'New set of questions'); regen.type = 'button';
+    regen.onclick = () => { prep = null; $('out').textContent = ''; prepBtn.click(); };
+    again.append(regen, el('span', 'status', 'For: ' + prep.ctx.replace('Interview type: ', '')));
+    out.append(s1, s2, s3, s4, s5, again);
+  }
+
+  /* ---------- practice ---------- */
+  let ctl = null;
+  function openPractice(i) {
+    const qs = prep.data.questions || []; if (!qs.length) return;
+    i = ((i % qs.length) + qs.length) % qs.length;
+    const sec = $('practiceSec');
+    [...sec.children].slice(1).forEach((c) => c.remove());
+    const box = el('div', 'practice');
+    box.append(el('span', 'status', 'Question ' + (i + 1) + ' of ' + qs.length), el('p', 'qq', String(qs[i].q || '')));
+    const ta = el('textarea'); ta.id = 'answerIn'; ta.placeholder = 'Type your answer the way you’d say it out loud.';
+    const acts = el('div', 'acts');
+    const send = el('button', 'btn', 'Get feedback'); send.type = 'button';
+    const next = el('button', 'btn ghost', 'Next question'); next.type = 'button'; next.onclick = () => openPractice(i + 1);
+    acts.append(send, next);
+    const fb = el('div');
+    box.append(ta, acts, fb);
+    sec.append(box);
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    ta.focus({ preventScroll: true });
+
+    send.onclick = async () => {
+      const ans = ta.value.trim();
+      if (ans.length < 20) { fb.textContent = ''; fb.append(el('p', 'note', 'Write a few sentences first, the way you’d answer in the room.')); return; }
+      await sampleReady;
+      if (!sample) { fb.textContent = ''; noClaude(fb); return; }
+      if (ctl) ctl.abort(); ctl = new AbortController();
+      send.disabled = true;
+      fb.className = 'fb'; fb.textContent = ''; fb.append(el('span', 'status dots', 'Reading your answer'));
+      const prompt = `You coach a design student for a real interview. ${prep.ctx}
+Portfolio (for facts only; do not invent anything beyond it):
+${(src === 'mine' ? MINE : (portfolioText() || '')).slice(0, 20000)}
+
+Question: ${qs[i].q}
+What the interviewer is checking: ${qs[i].why || ''}
+Their answer: ${ans}
+
+Give short, kind, direct feedback in exactly this format, plain text, no markdown symbols other than these headings and "- " bullets:
+## What worked
+- 1-2 bullets
+## What to add
+- 2-3 bullets, specific to their portfolio
+## A stronger version
+A tighter spoken answer in first person, 80-120 words, using only facts from the portfolio and their answer.`;
+      try {
+        await sample(prompt, { cache: false, signal: ctl.signal, onText: ({ text }) => drawFeedback(fb, text) });
+      } catch (e) {
+        if (e && e.code === 'cancelled') return;
+        if (e && e.text) drawFeedback(fb, e.text);
+        fb.append(el('p', 'err', errCopy(e && e.code)));
+      } finally { send.disabled = false; }
+    };
+  }
+  function drawFeedback(box, text) {
+    box.textContent = '';
+    let list = null;
+    text.split('\n').forEach((line) => {
+      const l = line.trim();
+      if (!l) { list = null; return; }
+      if (l.startsWith('## ')) { list = null; box.append(el('h4', null, l.slice(3))); }
+      else if (l.startsWith('- ')) { if (!list) { list = el('ul'); box.append(list); } list.append(el('li', null, l.slice(2))); }
+      else { list = null; box.append(el('p', null, l)); }
+    });
+  }
+
+  /* ---------- restore last prep ---------- */
+  try {
+    const s = JSON.parse(localStorage.getItem('prep-room') || 'null');
+    if (s && s.data && s.data.pitch) { prep = s; render(); $('saved').hidden = false; }
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
