@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>inihzays</title>
-<link rel="icon" type="image/png" href="favicon.png?v=202611260628">
-<link rel="icon" href="favicon.ico?v=202611260628" sizes="any">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=202611260628">
+<link rel="icon" type="image/png" href="favicon.png?v=202611260645">
+<link rel="icon" href="favicon.ico?v=202611260645" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=202611260645">
 <meta name="description" content="Yazhini S, product designer. Case studies, experience and contact.">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +29,7 @@
   --cs-bg:#FFFFFF;--cs-ink:#181919;--cs-soft:#6E6E6E;--cs-brand:#181919;--cs-tint:#EDEDEA;
   --wrap:1040px;
   --blue:#2F6BFF;
+  --blue2:#5B8CFF;
   --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
   --body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
   --pop:cubic-bezier(.34,1.56,.64,1);
@@ -42,6 +43,7 @@
 [hidden]{display:none!important}
 html{scroll-behavior:auto;overflow-x:clip}
 body{
+  margin:0;
   background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
   padding-left:max(16px, env(safe-area-inset-left,0px));
@@ -225,9 +227,7 @@ header .tennis{justify-self:end;margin-top:-8px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
 .tags li{font:500 12px/1 var(--body);padding:7px 11px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
 
-footer a{color:var(--fg);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
-footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-block:24px calc(env(safe-area-inset-bottom,0px) + 32px);border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
-.top{display:inline-flex;gap:8px;align-items:center;padding:10px 16px;border-radius:999px;background:var(--fg);color:var(--bg);border:0;cursor:pointer;font:500 13px/1 var(--body);transition:transform .5s var(--pop)}
+.top{display:inline-flex;gap:8px;align-items:center;padding:11px 18px;border-radius:999px;background:var(--fg);color:var(--bg);border:0;cursor:pointer;font:500 13px/1 var(--body);transition:transform .5s var(--pop)}
 .top:hover{transform:translateY(-3px)}
 
 
@@ -276,19 +276,6 @@ body.on-about .home-only{display:none!important}
 .ab-int{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .ab-int li{position:relative;padding-left:20px;font-size:15px;line-height:1.5}
 .ab-int li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--fg)}
-.contact{padding-block:clamp(90px,14vh,140px);display:flex;flex-direction:column;align-items:center;gap:44px;text-align:center;position:relative}
-.ct-h{margin:0;font:800 clamp(52px,8vw,96px)/.9 var(--display);letter-spacing:-.05em}
-.ct-row{display:flex;gap:clamp(14px,3vw,28px);justify-content:center}
-.ct-ic{--ic-bg:var(--bg);position:relative;display:grid;place-items:center;width:72px;height:72px;border:0;border-radius:22px;background:var(--chip);color:var(--fg);padding:0;
-  cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2732%27%20height%3D%2732%27%20viewBox%3D%270%200%2032%2032%27%3E%3Cpolygon%20points%3D%2716.0%2C2.0%2018.7%2C10.4%2026.9%2C7.3%2022.0%2C14.6%2029.6%2C19.1%2020.8%2C19.9%2022.1%2C28.6%2016.0%2C22.2%209.9%2C28.6%2011.2%2C19.9%202.4%2C19.1%2010.0%2C14.6%205.1%2C7.3%2013.3%2C10.4%27%20fill%3D%27%232F6BFF%27%20stroke%3D%27white%27%20stroke-width%3D%271.6%27%20stroke-linejoin%3D%27round%27/%3E%3C/svg%3E") 16 16, pointer;transition:color .3s var(--ease), background-color .3s var(--ease), transform .5s var(--pop)}
-.ct-ic svg{display:block;transition:transform .5s var(--pop)}
-.ct-ic:hover,.ct-ic:focus-visible{--ic-bg:var(--chip);color:var(--blue);transform:translateY(-6px) rotate(-4deg)}
-.ct-ic:nth-child(2):hover{transform:translateY(-6px) rotate(3deg)}
-.ct-ic:hover svg{transform:scale(1.12)}
-.ct-tip{position:absolute;left:50%;top:calc(100% + 12px);translate:-50% 4px;font:500 12px/1 var(--body);color:var(--muted);white-space:nowrap;opacity:0;transition:opacity .25s var(--ease), translate .4s var(--pop);pointer-events:none}
-.ct-ic:hover .ct-tip,.ct-ic:focus-visible .ct-tip{opacity:1;translate:-50% 0}
-.ct-toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 28px);translate:-50% 20px;opacity:0;z-index:60;padding:12px 18px;border-radius:999px;background:var(--fg);color:var(--bg);font:500 13px/1 var(--body);white-space:nowrap;pointer-events:none;transition:opacity .3s var(--ease), translate .5s var(--pop)}
-.ct-toast.on{opacity:1;translate:-50% 0}
 .lk-more{background:var(--chip);box-shadow:none}
 
 /* the worm */
@@ -298,6 +285,54 @@ body:not(.on-about) .about-only{display:none}
 .wbub{position:absolute;left:0;bottom:52px;padding:9px 14px;border-radius:16px 16px 16px 4px;background:var(--fg);color:var(--bg);font:500 13px/1 var(--body);white-space:nowrap;pointer-events:none;
   opacity:0;scale:.6;transform-origin:0 100%;transition:opacity .25s var(--ease), scale .45s var(--pop)}
 .wbub.on{opacity:1;scale:1}
+
+/* ---------- footer ---------- */
+.foot{--fbg:#0F0F0E;--ffg:#F4F4EF;--fmu:#8A8C86;--fln:#2A2B27;--gut-l:max(16px, env(safe-area-inset-left,0px));--gut-r:max(16px, env(safe-area-inset-right,0px));position:relative;margin-left:calc(-1 * var(--gut-l));margin-right:calc(-1 * var(--gut-r));margin-top:clamp(60px,10vh,110px);background:var(--fbg);color:var(--ffg);
+  padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px));border-radius:clamp(22px,3vw,36px) clamp(22px,3vw,36px) 0 0;transition:background-color .5s var(--ease)}
+:root[data-theme="dark"] .foot{--fbg:#1A1B19;--fln:#30312C}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .foot{--fbg:#1A1B19;--fln:#30312C}}
+.ft-in{padding-block:clamp(64px,10vh,104px) calc(env(safe-area-inset-bottom,0px) + 28px)}
+.ft-h{margin:0 0 clamp(44px,7vh,70px);display:flex;flex-direction:column;font:800 clamp(44px,7vw,92px)/.95 var(--display);letter-spacing:-.045em}
+.ft-h .g{color:#6E706A}
+.ft-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.ft-cols small{display:block;font:500 13px/1 var(--body);color:var(--fmu);margin-bottom:12px}
+.ft-val{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font:500 clamp(16px,1.6vw,20px)/1.3 var(--body);color:var(--ffg);transition:color .3s var(--ease)}
+.ft-val .cp{opacity:0;translate:-4px 0;transition:opacity .3s var(--ease), translate .4s var(--pop)}
+.ft-val:hover{color:var(--blue2)}
+.ft-val:hover .cp,.ft-val:focus-visible .cp{opacity:1;translate:0 0}
+.ft-val:focus-visible{outline:2px dashed var(--ffg);outline-offset:4px;border-radius:6px}
+.ft-soc{display:flex;gap:10px}
+.ft-soc a,.ft-soc button{all:unset;cursor:pointer;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--ffg);color:#0F0F0E;
+  transition:background-color .3s var(--ease), color .3s var(--ease), transform .5s var(--pop)}
+.ft-soc a:hover,.ft-soc button:hover,.ft-soc a:focus-visible,.ft-soc button:focus-visible{background:var(--blue2);color:#fff;transform:translateY(-4px) rotate(-6deg)}
+.ft-soc svg{display:block}
+.foot .wormlane{margin-top:44px;height:96px}
+.foot .wbub{background:var(--ffg);color:#0F0F0E}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid var(--fln);margin-top:44px;padding-top:24px;font:400 13px/1 var(--body);color:var(--fmu)}
+.foot .wormlane + .ft-bot{margin-top:0}
+.foot .top{background:var(--ffg);color:#0F0F0E}
+.foot .top span{display:inline-block;transition:transform .45s var(--pop)}
+.foot .top:hover span{transform:translateY(-3px)}
+.ft-toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 28px);translate:-50% 20px;opacity:0;z-index:60;padding:12px 18px;border-radius:999px;background:#F4F4EF;color:#0F0F0E;box-shadow:0 10px 30px rgba(0,0,0,.25);font:500 13px/1 var(--body);white-space:nowrap;pointer-events:none;transition:opacity .3s var(--ease), translate .5s var(--pop)}
+.ft-toast.on{opacity:1;translate:-50% 0}
+
+/* ---------- page + scroll motion ---------- */
+html.vt-route::view-transition-old(root){animation:vtOut .38s var(--ease) both}
+html.vt-route::view-transition-new(root){animation:vtIn .7s var(--ease) both}
+@keyframes vtOut{to{opacity:0;transform:translateY(-18px) scale(.985);filter:blur(6px)}}
+@keyframes vtIn{from{opacity:0;transform:translateY(26px) scale(.99);filter:blur(6px)}}
+.pre{opacity:0;translate:0 34px;transition:none}
+.rv-in{transition:opacity .9s var(--ease), translate 1s var(--ease)}
+
+/* ---------- glass cursor ---------- */
+.cur,.cur-dot{position:fixed;left:0;top:0;pointer-events:none;z-index:2147483000;border-radius:50%;opacity:0;transition:opacity .25s var(--ease)}
+.cur{width:46px;height:46px;margin:-23px 0 0 -23px;background:rgba(255,255,255,.05);
+  backdrop-filter:blur(.6px) saturate(1.6) contrast(1.08) brightness(1.04);-webkit-backdrop-filter:blur(.6px) saturate(1.6) contrast(1.08) brightness(1.04);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.65), inset 3px 0 5px -1px rgba(255,70,90,.55), inset -3px 0 5px -1px rgba(60,140,255,.6), inset 0 4px 7px -3px rgba(255,255,255,.9), inset 0 -5px 9px -5px rgba(0,0,0,.25), 0 0 0 1px rgba(0,0,0,.12), 0 6px 18px rgba(0,0,0,.12)}
+.cur-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--fg)}
+html.has-cur .cur,html.has-cur .cur-dot{opacity:1}
+html.has-cur.cur-hide .cur,html.has-cur.cur-hide .cur-dot{opacity:0}
+html.has-cur, html.has-cur *{cursor:none!important}
 
 /* ---------- motion ---------- */
 @keyframes grow{from{transform:scale(.2) translateY(.4em);opacity:0}to{transform:none;opacity:1}}
@@ -376,6 +411,8 @@ body:not(.on-about) .about-only{display:none}
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
 }
 @media (max-width:860px){
+  .ft-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .ft-cols > div:last-child{grid-column:1 / -1}
   .cs-nav{justify-content:flex-start;padding:10px 60px 10px 10px}
   .cs-panel{grid-template-columns:24px minmax(0,1fr) 24px}
   .cs-bar{margin-block:20px;width:3px}
@@ -407,6 +444,7 @@ body:not(.on-about) .about-only{display:none}
   .ab-two{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
+  .ft-cols{grid-template-columns:minmax(0,1fr);gap:26px}
   header{gap:6px}
   .chipnav{gap:0;padding:3px}
   .chipnav a{padding:7px 7px;font-size:11.5px}
@@ -442,7 +480,7 @@ body:not(.on-about) .about-only{display:none}
 
 <header>
   <a class="logo" href="#" id="logo" aria-label="yz. back to top">yz<span class="dot">.</span></a>
-  <nav class="chipnav" aria-label="Sections"><a href="#about-me">about</a><a href="#works">works</a><a href="#contact">contact</a></nav>
+  <nav class="chipnav" aria-label="Sections"><a href="#about-me">about</a><a href="#works">works</a></nav>
   <button class="tennis" id="theme" type="button" aria-label="Switch to dark mode">
       <svg viewBox="-2 14 524 136" aria-hidden="true">
         <line class="ground" x1="6" y1="142" x2="514" y2="142"/>
@@ -467,7 +505,7 @@ body:not(.on-about) .about-only{display:none}
       <h1 class="word" id="word" aria-label="Yazhini"><span><b>Y</b></span><span><b>a</b></span><span><b>z</b></span><span><b>h</b></span><span><b>i</b></span><span><b>n</b></span><span><b>i</b></span></h1>
 
       <div class="st s-coffee" style="--x:1%;--y:-16%;--d:.75s;--bob:5.5s" data-dx="-1" data-dy="-1">
-        <div class="in"><div class="sk" style="rotate:-7deg"><img class="pic" src="stickers/coffee.png?v=202611260628" width="520" height="344" alt="Pixel creature with a coffee and a laptop" draggable="false" style="--sw:170px"></div></div>
+        <div class="in"><div class="sk" style="rotate:-7deg"><img class="pic" src="stickers/coffee.png?v=202611260645" width="520" height="344" alt="Pixel creature with a coffee and a laptop" draggable="false" style="--sw:170px"></div></div>
       </div>
 
       <div class="st" style="--x:31%;--y:-14%;--d:.9s;--bob:4.6s" data-dx="0" data-dy="-1.2">
@@ -475,19 +513,19 @@ body:not(.on-about) .about-only{display:none}
       </div>
 
       <div class="st s-vinyl" style="--x:82%;--y:-22%;--d:1.05s;--bob:6s" data-dx="1" data-dy="-1">
-        <div class="in"><div class="sk"><img class="pic spin" src="stickers/vinyl.png?v=202611260628" width="520" height="513" alt="Vinyl record with stars" draggable="false" style="--sw:132px"></div></div>
+        <div class="in"><div class="sk"><img class="pic spin" src="stickers/vinyl.png?v=202611260645" width="520" height="513" alt="Vinyl record with stars" draggable="false" style="--sw:132px"></div></div>
       </div>
 
       <div class="st s-sleepy" style="--x:-2%;--y:66%;--d:1.2s;--bob:5.2s" data-dx="-1.2" data-dy=".6">
-        <div class="in"><div class="sk" style="rotate:-4deg"><img class="pic" src="stickers/sleepy.png?v=202611260628" width="520" height="380" alt="Sleeping cat with z z z" draggable="false" style="--sw:176px"></div></div>
+        <div class="in"><div class="sk" style="rotate:-4deg"><img class="pic" src="stickers/sleepy.png?v=202611260645" width="520" height="380" alt="Sleeping cat with z z z" draggable="false" style="--sw:176px"></div></div>
       </div>
 
       <div class="st s-reader" style="--x:85%;--y:60%;--d:1.35s;--bob:5.8s" data-dx="1.2" data-dy=".8">
-        <div class="in"><div class="sk" style="rotate:6deg"><img class="pic" src="stickers/reader.png?v=202611260628" width="520" height="449" alt="Black cat reading an open book" draggable="false" style="--sw:168px"></div></div>
+        <div class="in"><div class="sk" style="rotate:6deg"><img class="pic" src="stickers/reader.png?v=202611260645" width="520" height="449" alt="Black cat reading an open book" draggable="false" style="--sw:168px"></div></div>
       </div>
 
       <div class="st s-arrow" style="--x:62%;--y:-24%;--d:1.5s;--bob:4.8s" data-dx=".6" data-dy="-1.4">
-        <div class="in"><div class="sk" style="rotate:-12deg"><img class="pic" src="stickers/cursor.png?v=202611260628" width="520" height="520" alt="Pixel mouse pointer" draggable="false" style="--sw:92px"></div></div>
+        <div class="in"><div class="sk" style="rotate:-12deg"><img class="pic" src="stickers/cursor.png?v=202611260645" width="520" height="520" alt="Pixel mouse pointer" draggable="false" style="--sw:92px"></div></div>
       </div>
 
     </div>
@@ -496,7 +534,7 @@ body:not(.on-about) .about-only{display:none}
 
   <section class="sec wrap home-only" id="hello">
     <div class="about-text">
-        <h2 class="h2">Hello</h2>
+        <h2 class="h2 rv">Hello</h2>
         <p class="reveal">I’m Yazhini, a product designer. An empath obsessed with human behavior, asking <em>‘Why did they do that?’</em> before every build.</p>
         <div class="links">
           <a class="lk lk-more" href="#about-me">More about me <span aria-hidden="true">→</span></a>
@@ -505,20 +543,20 @@ body:not(.on-about) .about-only{display:none}
   </section>
 
   <section class="sec wrap home-only" id="works">
-    <h2 class="h2">Works</h2>
+    <h2 class="h2 rv">Works</h2>
     <div class="cards">
-      <a class="card" href="#the-origin" aria-label="Open The Origin case study">
-        <div class="img"><img src="cs/origin-cover.jpg?v=202611260628" width="1440" height="1005" alt="The Origin admin panel on a tilted laptop" loading="lazy"><span class="follow" aria-hidden="true">open case study</span></div>
+      <a class="card rv" href="#the-origin" aria-label="Open The Origin case study">
+        <div class="img"><img src="cs/origin-cover.jpg?v=202611260645" width="1440" height="1005" alt="The Origin admin panel on a tilted laptop" loading="lazy"><span class="follow" aria-hidden="true">open case study</span></div>
         <div class="meta"><div><h3>The Origin</h3><p>An e-commerce admin panel that runs B2C and bulk orders from one place.</p></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         <ul class="tags"><li>Client work</li><li>UI Design</li><li>Admin / SaaS</li></ul>
       </a>
-      <a class="card" href="#kite" aria-label="Open the Kite case study">
-        <div class="img"><img src="kite/kite-cover.jpg?v=202611260628" width="1440" height="1005" alt="Kite wordmark with Browser Extension and Mobile Companion pills" loading="lazy"><span class="follow" aria-hidden="true">open case study</span></div>
+      <a class="card rv" href="#kite" aria-label="Open the Kite case study">
+        <div class="img"><img src="kite/kite-cover.jpg?v=202611260645" width="1440" height="1005" alt="Kite wordmark with Browser Extension and Mobile Companion pills" loading="lazy"><span class="follow" aria-hidden="true">open case study</span></div>
         <div class="meta"><div><h3>Kite</h3><p>A browser extension and phone companion that keeps every job application in reach.</p></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         <ul class="tags"><li>Product Design</li><li>Extension</li></ul>
       </a>
-      <a class="card wide" href="#riot" aria-label="Open the Riot Games case study">
-        <div class="img"><img src="riot/riot-cover.jpg?v=202611260628" width="1440" height="555" alt="Riot Games logo on black" loading="lazy"><span class="follow" aria-hidden="true">open case study</span></div>
+      <a class="card wide rv" href="#riot" aria-label="Open the Riot Games case study">
+        <div class="img"><img src="riot/riot-cover.jpg?v=202611260645" width="1440" height="555" alt="Riot Games logo on black" loading="lazy"><span class="follow" aria-hidden="true">open case study</span></div>
         <div class="meta"><div><h3>Riot Games</h3><p>A concept mobile store for Valorant that shows your daily skins and tells you before a favourite one disappears.</p></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         <ul class="tags"><li>Speculative design</li><li>Mobile</li><li>Gaming</li></ul>
       </a>
@@ -531,10 +569,10 @@ body:not(.on-about) .about-only{display:none}
     <div class="ab-grid">
       <div class="mc" role="group" aria-label="Photos of Yazhini">
         <figure class="mp mp1" tabindex="0">
-          <img src="me/portrait2.jpg?v=202611260628" width="773" height="1000" alt="Yazhini smiling under a tree in a striped top">
+          <img src="me/portrait2.jpg?v=202611260645" width="773" height="1000" alt="Yazhini smiling under a tree in a striped top">
         </figure>
         <figure class="mp mp2" tabindex="0">
-          <img src="me/ballpit2.jpg?v=202611260628" width="992" height="1000" alt="Yazhini blowing a bubble in a pink-lit ball pit">
+          <img src="me/ballpit2.jpg?v=202611260645" width="992" height="1000" alt="Yazhini blowing a bubble in a pink-lit ball pit">
         </figure>
         <svg class="pin" viewBox="0 0 60 120" aria-hidden="true">
             <path d="M22 44 V100 a10 10 0 0 0 20 0 V40 a16 16 0 0 0 -32 0 V96" fill="none" stroke="#B9BDC4" stroke-width="4" stroke-linecap="round"/>
@@ -559,24 +597,24 @@ body:not(.on-about) .about-only{display:none}
       <div class="ab-sec">
         <h3 class="h3">Experience</h3>
         <ul class="xt">
-        <li class="xr"><div class="xr-who"><h4>UI/UX Design Intern</h4><p><span class="co">Avocado Studio</span></p></div><p class="xr-what">Designed The Origin, a client’s e-commerce admin panel, end to end.</p><span class="xr-when">Jun 2026 – Jul 2026</span></li>
-        <li class="xr"><div class="xr-who"><h4>Product Design Intern</h4><p><span class="co">SStudize</span></p></div><p class="xr-what">Designed and shipped two AI features, StudentGPT and TeacherGPT, simplifying learning for 500+ students.</p><span class="xr-when">Oct 2025 – Apr 2026</span></li>
-        <li class="xr"><div class="xr-who"><h4>Web Design Intern</h4><p><span class="co">Valsco Technology</span></p></div><p class="xr-what">Ideated and designed screens for a new blog feature, from early concepts to UI.</p><span class="xr-when">Aug 2025 – Oct 2025</span></li>
+        <li class="xr rv"><div class="xr-who"><h4>UI/UX Design Intern</h4><p><span class="co">Avocado Studio</span></p></div><p class="xr-what">Designed The Origin, a client’s e-commerce admin panel, end to end.</p><span class="xr-when">Jun 2026 – Jul 2026</span></li>
+        <li class="xr rv"><div class="xr-who"><h4>Product Design Intern</h4><p><span class="co">SStudize</span></p></div><p class="xr-what">Designed and shipped two AI features, StudentGPT and TeacherGPT, simplifying learning for 500+ students.</p><span class="xr-when">Oct 2025 – Apr 2026</span></li>
+        <li class="xr rv"><div class="xr-who"><h4>Web Design Intern</h4><p><span class="co">Valsco Technology</span></p></div><p class="xr-what">Ideated and designed screens for a new blog feature, from early concepts to UI.</p><span class="xr-when">Aug 2025 – Oct 2025</span></li>
         </ul>
       </div>
       <div class="ab-sec">
         <h3 class="h3">Education</h3>
         <ul class="xt">
-        <li class="xr"><div class="xr-who"><h4>Undergraduate</h4><p><span class="co">Vellore Institute of Technology</span></p></div><p class="xr-what">Graduating in 2027.</p><span class="xr-when">2023 – Present</span></li>
+        <li class="xr rv"><div class="xr-who"><h4>Undergraduate</h4><p><span class="co">Vellore Institute of Technology</span></p></div><p class="xr-what">Graduating in 2027.</p><span class="xr-when">2023 – Present</span></li>
         </ul>
       </div>
       <div class="ab-two">
-        <div class="ab-block ab-sec">
+        <div class="ab-block ab-sec rv">
           <h3 class="h3">Tools</h3>
           <ul class="ab-chips"><li>Figma</li><li>FigJam</li><li>Google Stitch</li><li>NotebookLM</li><li>Claude Design</li><li>Claude Code</li></ul>
         </div>
 
-        <div class="ab-block ab-sec">
+        <div class="ab-block ab-sec rv">
           <h3 class="h3">Interests</h3>
           <ul class="ab-int">
             <li>Gaming and exploring different game worlds</li>
@@ -589,17 +627,23 @@ body:not(.on-about) .about-only{display:none}
 
   </section>
 
-  <section class="sec wrap contact home-only" id="contact">
-    <h2 class="ct-h">Contact</h2>
-    <div class="ct-row">
-      <button class="ct-ic" id="ctMail" type="button" aria-label="Copy email address"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m3.8 7 8.2 6.3L20.2 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ct-tip" id="ctTip">copy email</span></button>
-      <a class="ct-ic" href="https://www.behance.net/yazhinis" target="_blank" rel="noopener" aria-label="Behance"><svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path fill="currentColor" d="M8.3 11.5c.9-.4 1.5-1.2 1.5-2.4 0-2.3-1.7-3-3.6-3H1.8v11.8h4.6c2.1 0 4.1-1 4.1-3.3 0-1.5-.8-2.6-2.2-3.1ZM4.3 8.1h1.8c.8 0 1.5.2 1.5 1.1 0 .9-.6 1.2-1.3 1.2h-2V8.1Zm2 7.6h-2v-3.2h2c1 0 1.7.4 1.7 1.6 0 1.2-.8 1.6-1.7 1.6ZM15.6 7.1h5.2v1.3h-5.2V7.1Zm2.7 2.9c-2.5 0-4.2 1.9-4.2 4.2 0 2.5 1.6 4.2 4.2 4.2 1.9 0 3.2-.9 3.8-2.7h-1.9c-.2.7-1.1 1-1.8 1-1.3 0-2-.7-2-1.9h5.8c.1-2.5-1.2-4.8-3.9-4.8Zm-1.8 3.3c.1-.9.7-1.6 1.7-1.6s1.5.6 1.6 1.6h-3.3Z"/></svg><span class="ct-tip">behance</span></a>
-      <a class="ct-ic" href="https://www.linkedin.com/in/inihzays/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4.5" fill="currentColor"/><path d="M7.6 10.2v6.6M7.6 7.3v.1M11.1 16.8v-6.6m0 3.1c0-1.9 1-3.2 2.7-3.2 1.6 0 2.6 1 2.6 3.2v3.5" style="stroke:var(--ic-bg)" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span class="ct-tip">linkedin</span></a>
-    </div>
-    <div class="ct-toast" id="ctToast" role="status"></div>
-  </section>
 
-  <div class="wormlane wrap about-only" id="wLane" aria-hidden="true">
+
+  <footer class="foot" id="contact">
+    <div class="wrap ft-in">
+      <h2 class="ft-h"><span class="rv">Let’s make it</span><span class="rv g">feel effortless.</span></h2>
+      <div class="ft-cols">
+        <div class="rv"><small>Email</small><button class="ft-val" type="button" data-copy="inihzay.s@gmail.com"><span>inihzay.s@gmail.com</span><svg class="cp" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div>
+        <div class="rv"><small>Phone</small><button class="ft-val" type="button" data-copy="+91 96293 58140"><span>+91 96293 58140</span><svg class="cp" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div>
+        <div class="rv"><small>Socials</small>
+          <div class="ft-soc">
+            <a href="https://www.linkedin.com/in/inihzays/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M5 3.6a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.2 9.4h3.6V21H3.2V9.4Zm5.9 0h3.4V11h.05c.48-.9 1.66-1.85 3.4-1.85 3.64 0 4.3 2.4 4.3 5.5V21h-3.6v-5.6c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95V21H9.1V9.4Z"/></svg></a>
+            <a href="https://www.behance.net/yazhinis" target="_blank" rel="noopener" aria-label="Behance"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8.3 11.5c.9-.4 1.5-1.2 1.5-2.4 0-2.3-1.7-3-3.6-3H1.8v11.8h4.6c2.1 0 4.1-1 4.1-3.3 0-1.5-.8-2.6-2.2-3.1ZM4.3 8.1h1.8c.8 0 1.5.2 1.5 1.1 0 .9-.6 1.2-1.3 1.2h-2V8.1Zm2 7.6h-2v-3.2h2c1 0 1.7.4 1.7 1.6 0 1.2-.8 1.6-1.7 1.6ZM15.6 7.1h5.2v1.3h-5.2V7.1Zm2.7 2.9c-2.5 0-4.2 1.9-4.2 4.2 0 2.5 1.6 4.2 4.2 4.2 1.9 0 3.2-.9 3.8-2.7h-1.9c-.2.7-1.1 1-1.8 1-1.3 0-2-.7-2-1.9h5.8c.1-2.5-1.2-4.8-3.9-4.8Zm-1.8 3.3c.1-.9.7-1.6 1.7-1.6s1.5.6 1.6 1.6h-3.3Z"/></svg></a>
+            <button type="button" data-copy="inihzay.s@gmail.com" aria-label="Copy email"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.4" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3.8 7 8.2 6.3L20.2 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+  <div class="wormlane about-only" id="wLane" aria-hidden="true">
     <div class="wbub" id="wBub">hey, don’t stop me!</div>
     <svg class="worm" id="worm" width="120" height="70" viewBox="0 0 120 70">
       <path id="wShade" fill="none" stroke="#7DB862" stroke-width="18" stroke-linecap="round"/>
@@ -613,14 +657,17 @@ body:not(.on-about) .about-only{display:none}
       </g>
     </svg>
   </div>
-
-  <footer class="wrap">
-    <span>© 2026 Yazhini</span>
-    <button class="top" id="toTop" type="button">back to top ↑</button>
-</footer>
+      <div class="ft-bot">
+        <span>© 2026 · made with curiosity</span>
+        <button class="top" id="toTop" type="button">back to top <span aria-hidden="true">↑</span></button>
+      </div>
+    </div>
+    <div class="ft-toast" id="ftToast" role="status"></div>
+  </footer>
 </main>
 
 <div class="lens" id="lens" aria-hidden="true"></div>
+<div class="cur" id="cur" aria-hidden="true"></div><div class="cur-dot" id="curDot" aria-hidden="true"></div>
 
 <div class="cs" id="cs" role="dialog" aria-modal="true" aria-label="Case study" hidden>
   <div class="cs-scrim" data-close></div>
@@ -841,20 +888,58 @@ body:not(.on-about) .about-only{display:none}
     requestAnimationFrame(frame);
   }
 
-  let toastT;
-  $('ctMail').addEventListener('click', async () => {
-    const t = $('ctToast'), tip = $('ctTip');
-    let ok = true;
-    try { await navigator.clipboard.writeText('inihzay.s@gmail.com'); } catch (e) { ok = false; }
-    t.textContent = ok ? 'Copied inihzay.s@gmail.com' : 'inihzay.s@gmail.com';
-    tip.textContent = ok ? 'copied!' : 'copy email';
-    t.classList.add('on'); clearTimeout(toastT);
-    toastT = setTimeout(() => { t.classList.remove('on'); tip.textContent = 'copy email'; }, 2200);
-  });
 
+
+  /* ---------------- footer copy ---------------- */
+  let ftT;
+  document.querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', async () => {
+    const v = b.dataset.copy, t = $('ftToast');
+    let ok = true;
+    try { await navigator.clipboard.writeText(v); } catch (e) { ok = false; }
+    t.textContent = ok ? 'Copied ' + v : v;
+    t.classList.add('on'); clearTimeout(ftT); ftT = setTimeout(() => t.classList.remove('on'), 2200);
+  }));
+
+  /* ---------------- scroll reveal ---------------- */
+  const rvIO = ('IntersectionObserver' in window) ? new IntersectionObserver((es) => {
+    es.forEach((e) => { if (e.isIntersecting) { const el = e.target; el.classList.add('rv-in'); el.classList.remove('pre'); rvIO.unobserve(el); } });
+  }, { rootMargin: '0px 0px -8% 0px' }) : null;
+  function prepReveal() {
+    if (!rvIO || reduce) return;
+    let i = 0;
+    document.querySelectorAll('.rv').forEach((el) => {
+      if (!el.offsetParent && getComputedStyle(el).position !== 'fixed') return;
+      const r = el.getBoundingClientRect();
+      if (r.top > innerHeight * .92) { el.classList.add('pre'); el.classList.remove('rv-in'); el.style.transitionDelay = ((i++ % 3) * 0.08) + 's'; rvIO.observe(el); }
+    });
+  }
+  addEventListener('aboutview', () => requestAnimationFrame(prepReveal));
+
+  /* ---------------- glass cursor ---------------- */
+  if (fine && !reduce) {
+    const cur = $('cur'), dot = $('curDot'), H = document.documentElement;
+    const C = { x: -100, y: -100, tx: -100, ty: -100, s: 1, ts: 1 };
+    addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      C.tx = e.clientX; C.ty = e.clientY; H.classList.add('has-cur');
+      const hot = e.target.closest && e.target.closest('a, button, .card, .st, .mp, .worm, .ph, [role="button"]');
+      C.ts = hot ? 1.7 : 1;
+      dot.style.opacity = hot ? '0' : '';
+    }, { passive: true });
+    addEventListener('pointerdown', () => { C.s = C.ts * .78; });
+    document.addEventListener('pointerleave', () => H.classList.add('cur-hide'));
+    document.addEventListener('pointerenter', () => H.classList.remove('cur-hide'));
+    (function loop() {
+      C.x += (C.tx - C.x) * .2; C.y += (C.ty - C.y) * .2; C.s += (C.ts - C.s) * .16;
+      cur.style.transform = `translate(${C.x}px, ${C.y}px) scale(${C.s.toFixed(3)})`;
+      dot.style.transform = `translate(${C.tx}px, ${C.ty}px)`;
+      H.classList.toggle('cur-hide', L.s > .2);
+      requestAnimationFrame(loop);
+    })();
+  }
 
   $('toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
-  const goHome = (e) => { if (e) e.preventDefault(); if (location.hash && location.hash !== '#') history.pushState(null, '', location.pathname + location.search); setView(false); window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); };
+  const goHome = (e) => { if (e) e.preventDefault(); if (location.hash && location.hash !== '#') history.pushState(null, '', location.pathname + location.search); if (onAbout) setView(false, () => window.scrollTo(0, 0)); else window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); };
   $('logo').addEventListener('click', goHome);
   $('backHome').addEventListener('click', goHome);
   document.querySelectorAll('.chipnav a').forEach((a) => a.addEventListener('click', (e) => {
@@ -906,54 +991,54 @@ body:not(.on-about) .about-only{display:none}
     'the-origin': {
       name: 'The Origin', sub: 'E-commerce admin · 2026', brand: '#181919', tint: '#EDEDEA',
       sections: [
-        ['intro', 'Intro', 'cs/origin-01-intro.jpg?v=202611260628', 2340, 'The Origin: the admin panel on a laptop, with the project introduction'],
-        ['overview', 'Overview', 'cs/origin-02-overview.jpg?v=202611260628', 3360, 'Project summary: role, timeline, platform, tools and industry'],
-        ['reality', 'Admin’s reality', 'cs/origin-03-reality.jpg?v=202611260628', 2500, 'Four problems the store team faced before The Origin'],
-        ['home', 'Home', 'cs/origin-04-home.jpg?v=202611260628', 3360, 'Performance dashboard with quick actions and key metrics'],
-        ['orders', 'Orders', 'cs/origin-05-orders.jpg?v=202611260628', 3480, 'Orders table, bulk selection and the update-status dialog'],
-        ['ia', 'Information architecture', 'cs/origin-06-ia.jpg?v=202611260628', 1800, 'Information architecture map of the admin panel'],
-        ['customers', 'Customers', 'cs/origin-07-customers.jpg?v=202611260628', 2190, 'Customer table and a single customer profile'],
-        ['type', 'Typography', 'cs/origin-08-type.jpg?v=202611260628', 1350, 'Typography: Rethink Sans in four weights'],
-        ['products', 'Products', 'cs/origin-09-products.jpg?v=202611260628', 4220, 'Product inventory table, add-product form and product picker'],
-        ['analytics', 'Analytics', 'cs/origin-10-analytics.jpg?v=202611260628', 3470, 'Analytics dashboard with sales, conversion and customer charts'],
-        ['color', 'Color palette', 'cs/origin-11-color.jpg?v=202611260628', 1470, 'Colour palette: #F8F8F8, #181919 and crimson #B8030E'],
-        ['coupons', 'Coupons', 'cs/origin-12-coupons.jpg?v=202611260628', 2329, 'Coupon management table and a coupon notification on a phone'],
-        ['thanks', 'Thank you', 'cs/origin-13-thanks.jpg?v=202611260628', 1178, 'Thank you for scrolling, with the website banners screen'],
+        ['intro', 'Intro', 'cs/origin-01-intro.jpg?v=202611260645', 2340, 'The Origin: the admin panel on a laptop, with the project introduction'],
+        ['overview', 'Overview', 'cs/origin-02-overview.jpg?v=202611260645', 3360, 'Project summary: role, timeline, platform, tools and industry'],
+        ['reality', 'Admin’s reality', 'cs/origin-03-reality.jpg?v=202611260645', 2500, 'Four problems the store team faced before The Origin'],
+        ['home', 'Home', 'cs/origin-04-home.jpg?v=202611260645', 3360, 'Performance dashboard with quick actions and key metrics'],
+        ['orders', 'Orders', 'cs/origin-05-orders.jpg?v=202611260645', 3480, 'Orders table, bulk selection and the update-status dialog'],
+        ['ia', 'Information architecture', 'cs/origin-06-ia.jpg?v=202611260645', 1800, 'Information architecture map of the admin panel'],
+        ['customers', 'Customers', 'cs/origin-07-customers.jpg?v=202611260645', 2190, 'Customer table and a single customer profile'],
+        ['type', 'Typography', 'cs/origin-08-type.jpg?v=202611260645', 1350, 'Typography: Rethink Sans in four weights'],
+        ['products', 'Products', 'cs/origin-09-products.jpg?v=202611260645', 4220, 'Product inventory table, add-product form and product picker'],
+        ['analytics', 'Analytics', 'cs/origin-10-analytics.jpg?v=202611260645', 3470, 'Analytics dashboard with sales, conversion and customer charts'],
+        ['color', 'Color palette', 'cs/origin-11-color.jpg?v=202611260645', 1470, 'Colour palette: #F8F8F8, #181919 and crimson #B8030E'],
+        ['coupons', 'Coupons', 'cs/origin-12-coupons.jpg?v=202611260645', 2329, 'Coupon management table and a coupon notification on a phone'],
+        ['thanks', 'Thank you', 'cs/origin-13-thanks.jpg?v=202611260645', 1178, 'Thank you for scrolling, with the website banners screen'],
       ],
     },
     'kite': {
       name: 'Kite', sub: 'Browser extension + mobile companion', brand: '#181919', tint: '#EDEDEA',
       sections: [
-        ['intro', 'Intro', 'kite/kite-intro.jpg?v=202611260628', 2448, 'Kite logo over a woman checking her phone, with the idea and the name'],
-        ['user', 'Isabella', 'kite/kite-user.jpg?v=202611260628', 2552, 'Isabella, a software engineer, and her request for a calm job-search app'],
-        ['problems', 'Problems & solutions', 'kite/kite-problems.jpg?v=202611260628', 1000, 'Three problems mapped to three Kite solutions'],
-        ['type', 'Typography', 'kite/kite-type.mp4?v=202611260628', 900, 'Typography: Poppins moving from Light 300 to Bold 700', true],
-        ['goals', 'Project goals', 'kite/kite-goals.jpg?v=202611260628', 1112, 'Project goals for a quiet job-search companion'],
-        ['call', 'Call card', 'kite/kite-call.jpg?v=202611260628', 1445, 'Incoming call screen with the Kite call card and talking points'],
-        ['research', 'Research insight', 'kite/kite-research.jpg?v=202611260628', 1034, 'Research insight from classmates and tools like Huntr and Teal'],
-        ['capture', 'Smart job capture', 'kite/kite-capture.mp4?v=202611260628', 900, 'A job listing is detected, its details are extracted and Save to Kite activates', true],
-        ['help', 'Help on time', 'kite/kite-help.jpg?v=202611260628', 1053, 'Design direction: help on time'],
-        ['tracking', 'Application tracking', 'kite/kite-tracking.mp4?v=202611260628', 900, 'Applications move through the pipeline manually or automatically', true],
-        ['decide', 'You decide', 'kite/kite-decide.jpg?v=202611260628', 1128, 'Design direction: you decide'],
-        ['inbox', 'Inbox intelligence', 'kite/kite-inbox.mp4?v=202611260628', 900, 'An email is scanned, interview details are extracted and a detected item appears', true],
-        ['calm', 'Calm by default', 'kite/kite-calm.jpg?v=202611260628', 1246, 'Design direction: calm by default'],
-        ['calls', 'Smart call detection', 'kite/kite-calls.mp4?v=202611260628', 900, 'An unknown number is matched to a saved application before you answer', true],
-        ['components', 'Components', 'kite/kite-components.jpg?v=202611260628', 1080, 'Navigation, icon set, stat cards and toggles'],
-        ['screens', 'Settings & add a job', 'kite/kite-screens.jpg?v=202611260628', 2262, 'Settings screen, add a job, add manually and paste link dialogs'],
-        ['error', 'Link error', 'kite/kite-error.mp4?v=202611260628', 900, 'Kite reads a pasted link, cannot read it, and offers to add the details by hand', true],
-        ['sync', 'In sync', 'kite/kite-sync.jpg?v=202611260628', 1434, 'Kite billboard: your job search, in sync'],
+        ['intro', 'Intro', 'kite/kite-intro.jpg?v=202611260645', 2448, 'Kite logo over a woman checking her phone, with the idea and the name'],
+        ['user', 'Isabella', 'kite/kite-user.jpg?v=202611260645', 2552, 'Isabella, a software engineer, and her request for a calm job-search app'],
+        ['problems', 'Problems & solutions', 'kite/kite-problems.jpg?v=202611260645', 1000, 'Three problems mapped to three Kite solutions'],
+        ['type', 'Typography', 'kite/kite-type.mp4?v=202611260645', 900, 'Typography: Poppins moving from Light 300 to Bold 700', true],
+        ['goals', 'Project goals', 'kite/kite-goals.jpg?v=202611260645', 1112, 'Project goals for a quiet job-search companion'],
+        ['call', 'Call card', 'kite/kite-call.jpg?v=202611260645', 1445, 'Incoming call screen with the Kite call card and talking points'],
+        ['research', 'Research insight', 'kite/kite-research.jpg?v=202611260645', 1034, 'Research insight from classmates and tools like Huntr and Teal'],
+        ['capture', 'Smart job capture', 'kite/kite-capture.mp4?v=202611260645', 900, 'A job listing is detected, its details are extracted and Save to Kite activates', true],
+        ['help', 'Help on time', 'kite/kite-help.jpg?v=202611260645', 1053, 'Design direction: help on time'],
+        ['tracking', 'Application tracking', 'kite/kite-tracking.mp4?v=202611260645', 900, 'Applications move through the pipeline manually or automatically', true],
+        ['decide', 'You decide', 'kite/kite-decide.jpg?v=202611260645', 1128, 'Design direction: you decide'],
+        ['inbox', 'Inbox intelligence', 'kite/kite-inbox.mp4?v=202611260645', 900, 'An email is scanned, interview details are extracted and a detected item appears', true],
+        ['calm', 'Calm by default', 'kite/kite-calm.jpg?v=202611260645', 1246, 'Design direction: calm by default'],
+        ['calls', 'Smart call detection', 'kite/kite-calls.mp4?v=202611260645', 900, 'An unknown number is matched to a saved application before you answer', true],
+        ['components', 'Components', 'kite/kite-components.jpg?v=202611260645', 1080, 'Navigation, icon set, stat cards and toggles'],
+        ['screens', 'Settings & add a job', 'kite/kite-screens.jpg?v=202611260645', 2262, 'Settings screen, add a job, add manually and paste link dialogs'],
+        ['error', 'Link error', 'kite/kite-error.mp4?v=202611260645', 900, 'Kite reads a pasted link, cannot read it, and offers to add the details by hand', true],
+        ['sync', 'In sync', 'kite/kite-sync.jpg?v=202611260645', 1434, 'Kite billboard: your job search, in sync'],
       ],
     },
     'riot': {
       name: 'Riot Games', sub: 'Valorant mobile store · concept', brand: '#181919', tint: '#EDEDEA',
       sections: [
-        ['intro', 'Intro', 'riot/riot-intro.jpg?v=202611260628', 1030, 'Riot Games logo: a mini project'],
-        ['problem', 'The problem', 'riot/riot-problem.jpg?v=202611260628', 1094, 'Your fav skin just dropped. You are AFK. Type, platform, domain and status'],
-        ['gap', 'The gap', 'riot/riot-gap.jpg?v=202611260628', 1182, 'Three gaps: no mobile access, third-party risk, lost revenue and FOMO'],
-        ['survey', 'Quick pulse survey', 'riot/riot-survey.jpg?v=202611260628', 1419, 'Four survey charts from Valorant players and creators'],
-        ['designed', 'What I designed', 'riot/riot-designed.jpg?v=202611260628', 717, 'What I designed, and the design constraint'],
-        ['interfaces', 'Interfaces', 'riot/riot-interfaces.jpg?v=202611260628', 6019, 'Five mobile screens: navigation, daily store, search, favourites and drop alerts'],
-        ['next', 'What I’d explore next', 'riot/riot-next.jpg?v=202611260628', 1156, 'Next: wishlist push alerts, in-app purchase flow, skin history'],
+        ['intro', 'Intro', 'riot/riot-intro.jpg?v=202611260645', 1030, 'Riot Games logo: a mini project'],
+        ['problem', 'The problem', 'riot/riot-problem.jpg?v=202611260645', 1094, 'Your fav skin just dropped. You are AFK. Type, platform, domain and status'],
+        ['gap', 'The gap', 'riot/riot-gap.jpg?v=202611260645', 1182, 'Three gaps: no mobile access, third-party risk, lost revenue and FOMO'],
+        ['survey', 'Quick pulse survey', 'riot/riot-survey.jpg?v=202611260645', 1419, 'Four survey charts from Valorant players and creators'],
+        ['designed', 'What I designed', 'riot/riot-designed.jpg?v=202611260645', 717, 'What I designed, and the design constraint'],
+        ['interfaces', 'Interfaces', 'riot/riot-interfaces.jpg?v=202611260645', 6019, 'Five mobile screens: navigation, daily store, search, favourites and drop alerts'],
+        ['next', 'What I’d explore next', 'riot/riot-next.jpg?v=202611260645', 1156, 'Next: wishlist push alerts, in-app purchase flow, skin history'],
       ],
     },
   };
@@ -1084,11 +1169,19 @@ body:not(.on-about) .about-only{display:none}
 
   /* ---------------- routes: #the-origin, #kite, #works ---------------- */
   let booted = false, onAbout = false;
-  function setView(about) {
-    if (about === onAbout) return;
-    onAbout = about;
-    document.body.classList.toggle('on-about', about);
-    window.dispatchEvent(new Event('aboutview'));
+  function setView(about, after) {
+    if (about === onAbout) { if (after) after(); return; }
+    const swap = () => {
+      onAbout = about;
+      document.body.classList.toggle('on-about', about);
+      if (after) after();
+      window.dispatchEvent(new Event('aboutview'));
+    };
+    if (booted && !reduce && document.startViewTransition && csEl.hidden) {
+      root.classList.add('vt-route');
+      const t = document.startViewTransition(swap);
+      t.finished.finally(() => root.classList.remove('vt-route'));
+    } else swap();
   }
   function route() {
     const h = location.hash.slice(1);
@@ -1097,14 +1190,17 @@ body:not(.on-about) .about-only{display:none}
     else {
       const wasOpen = !csEl.hidden;
       closeCS();
-      if (h === 'contact') { setView(false); const t = $('contact'); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: booted && !reduce ? 'smooth' : 'auto' }); return; }
-      if (h === 'about-me') { const was = onAbout; setView(true); if (!was || !wasOpen) window.scrollTo(0, 0); return; }
-      setView(false);
-      if (h === 'about' || h === 'experience') { window.scrollTo(0, 0); return; }
-      if (h === 'works') {
-        const t = $(h), r = t.getBoundingClientRect();
-        if (!wasOpen || r.top > innerHeight || r.bottom < 0) window.scrollTo({ top: r.top + window.scrollY - 70, behavior: booted && !reduce ? 'smooth' : 'auto' });
-      }
+      if (h === 'contact') { setView(false, () => { const t = $('contact'); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: booted && !reduce ? 'smooth' : 'auto' }); }); return; }
+      if (h === 'about-me') { const was = onAbout; setView(true, () => { if (!was || !wasOpen) window.scrollTo(0, 0); }); return; }
+      const fromAbout = onAbout;
+      setView(false, () => {
+        if (h === 'about' || h === 'experience') { window.scrollTo(0, 0); return; }
+        if (h === 'works') {
+          const t = $(h), r = t.getBoundingClientRect();
+          if (fromAbout) { window.scrollTo(0, r.top + window.scrollY - 70); return; }
+          if (!wasOpen || r.top > innerHeight || r.bottom < 0) window.scrollTo({ top: r.top + window.scrollY - 70, behavior: booted && !reduce ? 'smooth' : 'auto' });
+        }
+      });
     }
   }
 
@@ -1115,6 +1211,8 @@ body:not(.on-about) .about-only{display:none}
   window.addEventListener('hashchange', route);
   route();
   booted = true;
+  requestAnimationFrame(prepReveal);
+  addEventListener('popstate', () => { if (!location.hash) setView(false, () => window.scrollTo(0, 0)); });
 })();
 </script>
 </body>
