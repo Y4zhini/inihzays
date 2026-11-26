@@ -28,15 +28,16 @@
   --drop:rgba(18,19,17,.18);
   --cs-bg:#FFFFFF;--cs-ink:#181919;--cs-soft:#6E6E6E;--cs-brand:#181919;--cs-tint:#EDEDEA;
   --wrap:1040px;
+  --blue:#2F6BFF;
   --display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
   --body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
   --pop:cubic-bezier(.34,1.56,.64,1);
   --ease:cubic-bezier(.22,1,.36,1);
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){--bg:#0B0B0A;--fg:#F4F4EF;--muted:#6F716B;--card:#161715;--line:#262724;--chip:#1E1F1C;--scrim:rgba(0,0,0,.6);--drop:rgba(0,0,0,.5);color-scheme:dark}
+  :root:not([data-theme="light"]){--blue:#7EA2FF;--bg:#0B0B0A;--fg:#F4F4EF;--muted:#6F716B;--card:#161715;--line:#262724;--chip:#1E1F1C;--scrim:rgba(0,0,0,.6);--drop:rgba(0,0,0,.5);color-scheme:dark}
 }
-:root[data-theme="dark"]{--bg:#0B0B0A;--fg:#F4F4EF;--muted:#6F716B;--card:#161715;--line:#262724;--chip:#1E1F1C;--scrim:rgba(0,0,0,.6);--drop:rgba(0,0,0,.5);color-scheme:dark}
+:root[data-theme="dark"]{--blue:#7EA2FF;--bg:#0B0B0A;--fg:#F4F4EF;--muted:#6F716B;--card:#161715;--line:#262724;--chip:#1E1F1C;--scrim:rgba(0,0,0,.6);--drop:rgba(0,0,0,.5);color-scheme:dark}
 
 [hidden]{display:none!important}
 html{scroll-behavior:auto;overflow-x:clip}
@@ -236,8 +237,8 @@ body.on-about .home-only{display:none!important}
 .aboutpage{padding-block:110px 40px}
 .back{display:inline-flex;gap:8px;align-items:center;font:500 13px/1 var(--body);color:var(--muted);padding:9px 14px 9px 10px;border-radius:999px;background:var(--chip);margin-bottom:36px;transition:color .3s var(--ease), transform .45s var(--pop)}
 .back:hover{color:var(--fg);transform:translateX(-3px)}
-.ab-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,80px);align-items:start}
-.mc{position:sticky;top:100px;width:100%;max-width:440px;aspect-ratio:440/520;justify-self:start}
+.ab-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,80px);align-items:center}
+.mc{position:relative;width:100%;max-width:440px;aspect-ratio:440/520;justify-self:start}
 .mp{position:absolute;margin:0;cursor:pointer;transform:var(--t);transition:transform .6s var(--ease), filter .45s var(--ease), box-shadow .45s var(--ease);box-shadow:0 18px 36px -14px var(--drop)}
 .mp img{display:block;width:100%;height:100%;object-fit:cover}
 .mp1{--t:rotate(-3deg);left:0;top:8%;width:64%;aspect-ratio:773/1000;z-index:2;transform-origin:70% 0}
@@ -247,6 +248,18 @@ body.on-about .home-only{display:none!important}
 .mc:has(.mp:hover) .mp:not(:hover),.mc:has(.mp:focus-visible) .mp:not(:focus-visible){transform:var(--t) scale(.95);filter:brightness(.85)}
 .mp:focus-visible{outline:2px dashed var(--fg);outline-offset:6px}
 .ab-text{display:flex;flex-direction:column;gap:34px;min-width:0}
+.ab-more{display:flex;flex-direction:column;gap:clamp(64px,9vh,96px);margin-top:clamp(80px,12vh,120px)}
+.ab-sec .h3{margin-bottom:8px}
+.xt{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--line)}
+.xr{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.6fr) 150px;gap:clamp(20px,4vw,56px);align-items:baseline;padding-block:30px;border-top:1px solid var(--line)}
+.xr-who h4{margin:0 0 6px;font:600 clamp(18px,1.7vw,21px)/1.25 var(--display);letter-spacing:-.01em}
+.xr-who p{margin:0;font-size:14px;color:var(--muted)}
+.xr .co{transition:color .3s var(--ease)}
+.xr:hover .co{color:var(--blue)}
+.xr-what{margin:0;font-size:15px;line-height:1.6;color:var(--muted)}
+.xr-when{text-align:right;font-size:14px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.ab-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px)}
+.ab-two .h3{margin-bottom:16px}
 .ab-h{font:800 clamp(44px,6vw,72px)/.95 var(--display);letter-spacing:-.045em;margin:0}
 .ab-lede{font:400 clamp(16px,1.5vw,18px)/1.7 var(--body);margin:-12px 0 0;max-width:56ch}
 .ab-block .h3{margin-bottom:14px}
@@ -266,8 +279,11 @@ body.on-about .home-only{display:none!important}
 .lk-more{background:var(--chip);box-shadow:none}
 
 /* the worm */
-.wormlane{position:relative;left:50%;width:100vw;margin-left:-50vw;height:70px;margin-top:72px;overflow:hidden}
+.wormlane{position:relative;left:50%;width:100vw;margin-left:-50vw;height:120px;margin-top:72px;overflow:hidden}
 .worm{position:absolute;left:0;bottom:4px;cursor:pointer;overflow:visible}
+.wbub{position:absolute;left:0;bottom:60px;padding:9px 14px;border-radius:16px 16px 16px 4px;background:var(--fg);color:var(--bg);font:500 13px/1 var(--body);white-space:nowrap;pointer-events:none;
+  opacity:0;scale:.6;transform-origin:0 100%;transition:opacity .25s var(--ease), scale .45s var(--pop)}
+.wbub.on{opacity:1;scale:1}
 
 /* ---------- motion ---------- */
 @keyframes grow{from{transform:scale(.2) translateY(.4em);opacity:0}to{transform:none;opacity:1}}
@@ -369,7 +385,11 @@ body.on-about .home-only{display:none!important}
 }
 @media (max-width:860px){
   .ab-grid{grid-template-columns:minmax(0,1fr)}
-  .mc{position:relative;top:0;max-width:380px;margin:30px auto 0}
+  .mc{max-width:380px;margin:30px auto 0}
+  .xr{grid-template-columns:minmax(0,1fr) auto;row-gap:10px}
+  .xr-when{text-align:right}
+  .xr-what{grid-column:1 / -1;grid-row:2}
+  .ab-two{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
   .cards{grid-template-columns:minmax(0,1fr)}
@@ -515,28 +535,31 @@ body.on-about .home-only{display:none!important}
         <h1 class="ab-h">About me</h1>
         <p class="ab-lede">I’m Yazhini, a Product Designer driven by curiosity and a genuine interest in how people think and interact with technology. I naturally look at problems from different angles, notice the tiny friction points others might miss, and trust my intuition when a flow feels off. Every project is a chance for me to experiment, learn, and craft experiences that feel effortless.</p>
 
-        <div class="ab-block">
-          <h3 class="h3">Experience</h3>
-          <ul class="ab-list">
-            <li><div><b>Avocado Studio</b><span>UI/UX Design Intern</span></div><p>Designed The Origin, a client’s e-commerce admin panel, end to end.</p><small>Jun – Jul 2026</small></li>
-            <li><div><b>SStudize</b><span>Product Design Intern</span></div><p>Designed and shipped two AI features, StudentGPT and TeacherGPT, for 500+ students.</p><small>Oct 2025 – Apr 2026</small></li>
-            <li><div><b>Valsco Technology</b><span>Web Design Intern</span></div><p>Ideated and designed screens for a new blog feature.</p><small>Aug – Oct 2025</small></li>
-          </ul>
-        </div>
+      </div>
+    </div>
 
-        <div class="ab-block">
-          <h3 class="h3">Education</h3>
-          <ul class="ab-list">
-            <li><div><b>Vellore Institute of Technology</b><span>Graduating 2027</span></div><small>2023 – present</small></li>
-          </ul>
-        </div>
-
-        <div class="ab-block">
+    <div class="ab-more">
+      <div class="ab-sec">
+        <h3 class="h3">Experience</h3>
+        <ul class="xt">
+        <li class="xr"><div class="xr-who"><h4>UI/UX Design Intern</h4><p><span class="co">Avocado Studio</span></p></div><p class="xr-what">Designed The Origin, a client’s e-commerce admin panel, end to end.</p><span class="xr-when">Jun 2026 – Jul 2026</span></li>
+        <li class="xr"><div class="xr-who"><h4>Product Design Intern</h4><p><span class="co">SStudize</span>, Remote</p></div><p class="xr-what">Designed and shipped two AI features, StudentGPT and TeacherGPT, simplifying learning for 500+ students.</p><span class="xr-when">Oct 2025 – Apr 2026</span></li>
+        <li class="xr"><div class="xr-who"><h4>Web Design Intern</h4><p><span class="co">Valsco Technology</span>, Remote</p></div><p class="xr-what">Ideated and designed screens for a new blog feature, from early concepts to UI.</p><span class="xr-when">Aug 2025 – Oct 2025</span></li>
+        </ul>
+      </div>
+      <div class="ab-sec">
+        <h3 class="h3">Education</h3>
+        <ul class="xt">
+        <li class="xr"><div class="xr-who"><h4>Undergraduate</h4><p><span class="co">Vellore Institute of Technology</span></p></div><p class="xr-what">Graduating in 2027.</p><span class="xr-when">2023 – Present</span></li>
+        </ul>
+      </div>
+      <div class="ab-two">
+        <div class="ab-block ab-sec">
           <h3 class="h3">Tools</h3>
           <ul class="ab-chips"><li>Figma</li><li>FigJam</li><li>Google Stitch</li><li>NotebookLM</li><li>Claude Design</li><li>Claude Code</li></ul>
         </div>
 
-        <div class="ab-block">
+        <div class="ab-block ab-sec">
           <h3 class="h3">Interests</h3>
           <ul class="ab-int">
             <li>Gaming and exploring different game worlds</li>
@@ -549,6 +572,7 @@ body.on-about .home-only{display:none!important}
     </div>
 
     <div class="wormlane" aria-hidden="true">
+      <div class="wbub" id="wBub">hey, don’t stop me!</div>
       <svg class="worm" id="worm" width="120" height="70" viewBox="0 0 120 70">
         <path id="wShade" fill="none" stroke="#7DB862" stroke-width="18" stroke-linecap="round"/>
         <path id="wBody" fill="none" stroke="#A6DB8C" stroke-width="15" stroke-linecap="round"/>
@@ -817,11 +841,11 @@ const ASSET = {"cs/origin-01-intro.jpg":"data:image/jpeg;base64,/9j/4AAQSkZJRgAB
 
   /* ---------------- inchworm ---------------- */
   (() => {
-    const svg = $('worm'), body = $('wBody'), shade = $('wShade'), head = $('wHead');
+    const svg = $('worm'), body = $('wBody'), shade = $('wShade'), head = $('wHead'), bub = $('wBub');
     const L = 64, STEP = 30, CYCLE = 1000, BASE = 52;
     let x = -90, phase = 0, last = 0, paused = false;
-    svg.addEventListener('pointerenter', () => { paused = true; });
-    svg.addEventListener('pointerleave', () => { paused = false; });
+    svg.addEventListener('pointerenter', () => { paused = true; bub.classList.add('on'); });
+    svg.addEventListener('pointerleave', () => { paused = false; bub.classList.remove('on'); });
     const ease = (t) => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
     function draw() {
       // phase 0-.5: tail pulls in under an arch; .5-1: head stretches forward, arch flattens
@@ -835,6 +859,7 @@ const ASSET = {"cs/origin-01-intro.jpg":"data:image/jpeg;base64,/9j/4AAQSkZJRgAB
       body.setAttribute('d', d); shade.setAttribute('d', d); shade.setAttribute('transform', 'translate(0 2)');
       head.setAttribute('transform', `translate(${t1 + 4} ${BASE - 5})`);
       svg.style.transform = `translateX(${x}px)`;
+      bub.style.transform = `translateX(${x + t1 - 2}px)`;
     }
     function tick(now) {
       const dt = last ? Math.min(now - last, 60) : 0; last = now;
